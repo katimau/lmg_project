@@ -5,22 +5,11 @@ using UnityEngine.Events;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public string GameSceneName;
-    UnityEngine.SceneManagement.Scene gameScene;
-
-    void Start()
-    {
-        //gameScene = SceneManaget.GetSceneByName(GameSceneName);
-    }
-
-    void Update()
-    {
-        
-    }
+    public string gameSceneName;
 
     public void StartGame(){
         Debug.Log("Entering the game...");
-        UnityEngine.SceneManagement.SceneManager.LoadScene(GameSceneName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
     }
 
     public void QuitGame(){
