@@ -7,13 +7,12 @@ public class MainMenuManager : MonoBehaviour
 {
     public string GameSceneName;
     UnityEngine.SceneManagement.Scene gameScene;
-    // Start is called before the first frame update
+
     void Start()
     {
         //gameScene = SceneManaget.GetSceneByName(GameSceneName);
     }
 
-    // Update is called once per frame
     void Update()
     {
         

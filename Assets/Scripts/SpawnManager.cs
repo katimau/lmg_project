@@ -15,7 +15,6 @@ public class SpawnManager : MonoBehaviour
 
     private PlayerController playerControllerScript; 
 
-    // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
@@ -23,7 +22,6 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
