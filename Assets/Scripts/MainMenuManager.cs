@@ -5,26 +5,16 @@ using UnityEngine.Events;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public string GameSceneName;
-    UnityEngine.SceneManagement.Scene gameScene;
-    // Start is called before the first frame update
-    void Start()
-    {
-        //gameScene = SceneManaget.GetSceneByName(GameSceneName);
-    }
+    public string gameSceneName;
 
-    // Update is called once per frame
-    void Update()
+    public void StartGame()
     {
-        
-    }
-
-    public void StartGame(){
         Debug.Log("Entering the game...");
-        UnityEngine.SceneManagement.SceneManager.LoadScene(GameSceneName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
     }
 
-    public void QuitGame(){
+    public void QuitGame()
+    {
         Debug.Log("Quitting the game...");
         Application.Quit();
     }
