@@ -5,12 +5,12 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject obstaclePrefab;
+      //vedä tähän SpawnManager Unityssa, korjaa spawnPos -tehty
+      public GameObject spawnPoint;
+    private Vector3 spawnPos = new Vector3(35, 0, 0);
 
-    public GameObject spawnPoint;
-
-    //vedä tähän SpawnManager Unityssa, korjaa spawnPos?
-    private Vector3 spawnPos = new Vector3(25, 0, 0);
-    private float startDelay = 2;
+    //startDelay ja repeatRate olivat molemmat 2, mutta kokeillaan näin alkuun
+    private float startDelay = 5;
     private float repeatRate = 2;
 
     private PlayerController playerControllerScript;
