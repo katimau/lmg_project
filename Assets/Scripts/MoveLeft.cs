@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
-    public Vector3 speed = Vector3.left * 15;
+    public Vector3 speed;
 
     private PlayerController playerControllerScript;
 
