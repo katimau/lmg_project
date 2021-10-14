@@ -125,3 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d0b8fde887f4248bad575138f7feda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: {x: -15, y: 0, z: 0}
+  destroyWhenOutOfBounds: 1
+  boundsMin: {x: -15, y: -1000, z: -1000}
+  boundsMax: {x: 1000, y: 1000, z: 1000}
