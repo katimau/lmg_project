@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
-    private float speed = 30;
+    private float speed = 15; //aloitellaan tällä, voi säätää myöhemmin lisää
+                                //hidas aloitus, jotta estebugi selviää taas
     private PlayerController playerControllerScript;
-    private float leftBound = -15;
+
+    private float leftBound = -15; //raja esteiden tuhoamiselle kun menevät pelaajan "ohi"
 
     void Start()
     {
