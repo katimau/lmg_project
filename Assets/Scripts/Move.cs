@@ -28,7 +28,7 @@ public class Move : MonoBehaviour
             transform.Translate(speed * Time.fixedDeltaTime);
         }
 
-        if (bounds.Contains(transform.position) && destroyWhenOutOfBounds)
+        if (!bounds.Contains(transform.position) && destroyWhenOutOfBounds)
         {
             Destroy(gameObject);
         }
