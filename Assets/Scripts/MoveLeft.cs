@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
-    private float speed = 15; //aloitellaan tällä, voi säätää myöhemmin lisää
-                                //hidas aloitus, jotta estebugi selviää taas
+    public Vector3 speed;
+
     private PlayerController playerControllerScript;
 
-    private float leftBound = -15; //raja esteiden tuhoamiselle kun menevät pelaajan "ohi"
+    public bool destroyWhenOutOfBounds;
+
+    // Alue, minkä ulkopuolella oleva objecti tuhotaan, jos destroyWhenOutOfBounds
+    public Vector3 boundsMin;
+    public Vector3 boundsMax;
+    private Bounds bounds;
 
     void Start()
     {
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+        bounds.SetMinMax(boundsMin, boundsMax);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (playerControllerScript.gameOver == false)
         {
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
+            transform.Translate(speed * Time.fixedDeltaTime);
         }
 
-        if (transform.position.x < leftBound && gameObject.CompareTag("Obstacle"))
+        if (bounds.Contains(transform.position) && destroyWhenOutOfBounds)
         {
             Destroy(gameObject);
         }
