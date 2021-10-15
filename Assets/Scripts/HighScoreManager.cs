@@ -3,28 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class HighScoreManager
+public static class HighScoreManager
 {
-    public static int maxScoreItems = int.MaxValue;
-    public static string relativeFilePath = "highscores.json";
-
-    private static string GetDataPath(string path)
-    {
-        string basePath = Path.GetFullPath(Application.persistentDataPath);
-        string absolutePath = Path.GetFullPath(Path.Combine(basePath, path));
-
-        // Check that path points inside the folder given by Application.persistentDataPath
-        if (!absolutePath.StartsWith(basePath))
-        {
-            throw new System.ArgumentException("Path is not valid.");
-        }
-        return absolutePath;
-    }
+    private static int maxScoreItems = int.MaxValue;
+    private static string highScoreFilePath = "highscores.json";
 
     public static List<HighScoreItem> LoadScores()
     {
         //string path = Path.Combine(Application.persistentDataPath, relativeFilePath);
-        string path = GetDataPath(relativeFilePath);
+        string path = FileHelper.GetDataPath(highScoreFilePath);
         if (File.Exists(path))
         {
             Debug.Log("Reading high score file...");
@@ -44,7 +31,7 @@ public class HighScoreManager
         if (scores.Count != 0)
         {
             //string path = Path.Combine(Application.persistentDataPath, relativeFilePath);
-            string path = GetDataPath(relativeFilePath);
+            string path = FileHelper.GetDataPath(highScoreFilePath);
             string jsonString = JsonUtility.ToJson(scores);
             File.WriteAllText(path, jsonString);
         }
