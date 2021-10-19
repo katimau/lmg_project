@@ -3,13 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Text))]
 public class Scoring : MonoBehaviour
 {
-    public GameObject Scoretext;
-    public static int theScore;
+    private Text scoreText;
 
-     void Update()
+    private int scoreBacking;
+    public int Score
     {
-        Scoretext.GetComponent<Text>().text = "SCORE:" + theScore;
+        get => scoreBacking;
+        set
+        {
+            scoreBacking = value;
+            UpdateScoreText();
+        }
+    }
+
+    void Start()
+    {
+        scoreText = GetComponent<Text>();
+    }
+
+    void UpdateScoreText()
+    {
+        scoreText.text = "SCORE:" + Score;
     }
 }

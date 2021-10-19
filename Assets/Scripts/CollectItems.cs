@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectItems : MonoBehaviour {
-
+public class CollectItems : MonoBehaviour
+{
     public AudioSource collectSound;
+    private Scoring scoreComponent;
+
+    public int points;
+
+    void Start()
+    {
+        scoreComponent = GameObject.Find("Score Text").GetComponent<Scoring>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        collectSound.Play();
-        Scoring.theScore += 50;
+        if (collectSound != null)
+        {
+            collectSound.Play();
+        }
+        scoreComponent.Score += points;
         Destroy(gameObject);
     }
 }

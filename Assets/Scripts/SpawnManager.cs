@@ -8,7 +8,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject obstaclePrefab;
     public GameObject itemPrefab;
 
-      //vedä tähän SpawnManager Unityssa, korjaa spawnPos -tehty
+    //vedä tähän SpawnManager Unityssa, korjaa spawnPos -tehty
     public GameObject spawnPoint;
 
     //molemmat olivat privateja
@@ -24,11 +24,9 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
-        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
-
         InvokeRepeating("SpawnItem", startDelay, repeatRate);
-        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     void Update()
@@ -41,7 +39,13 @@ public class SpawnManager : MonoBehaviour
         if (playerControllerScript.gameOver == false)
         {
             Instantiate(obstaclePrefab, spawnPosObject, obstaclePrefab.transform.rotation);
+        }
+    }
 
+    void SpawnItem()
+    {
+        if (playerControllerScript.gameOver == false)
+        {
             Instantiate(itemPrefab, spawnPosItem, itemPrefab.transform.rotation);
         }
     }
