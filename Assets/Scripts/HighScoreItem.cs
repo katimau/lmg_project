@@ -6,13 +6,11 @@ using UnityEngine;
 public class HighScoreItem
 {
     public int score;
-    public System.DateTime time;
     public string name;
 
-    public HighScoreItem(int score, System.DateTime time, string name)
+    public HighScoreItem(int score, string name)
     {
         this.score = score;
-        this.time = time;
         this.name = name;
     }
 }
