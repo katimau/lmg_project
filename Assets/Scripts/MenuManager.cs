@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MainMenuManager : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
+    public string mainMenuSceneName;
     public string gameSceneName;
 
-    public GameObject mainMenuPanel;
+    public GameObject menuPanel;
     public GameObject settingsPanel;
     public SettingsMenu settingsMenu;
 
     private void Start()
     {
-        if (mainMenuPanel == null || settingsPanel == null || settingsMenu == null)
+        if (menuPanel == null || settingsPanel == null || settingsMenu == null)
         {
             Debug.LogError("Menu panels not set!");
         }
@@ -27,14 +28,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void OpenSettings()
     {
-        mainMenuPanel.SetActive(false);
+        menuPanel.SetActive(false);
         settingsPanel.SetActive(true);
     }
 
     public void ExitSettings()
     {
         settingsPanel.SetActive(false);
-        mainMenuPanel.SetActive(true);
+        menuPanel.SetActive(true);
     }
 
     public void SaveAndExitSettings()
@@ -47,5 +48,19 @@ public class MainMenuManager : MonoBehaviour
     {
         Debug.Log("Quitting the game...");
         Application.Quit();
+    }
+
+    public void OpenMenu()
+    {
+        if (menuPanel.activeSelf == false && settingsPanel.activeSelf == false)
+        {
+            menuPanel.SetActive(true);
+        }
+    }
+
+    public void ExitToMainMenu()
+    {
+        Debug.Log("Exiting to main menu...");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
     }
 }

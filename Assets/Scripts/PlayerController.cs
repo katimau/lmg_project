@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     public float jumpForce;
-    public float gravityModifier;
+    public float gravity;
     public bool isOnGround = true;
 
     public bool gameOver = false;
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        Physics.gravity *= gravityModifier;
+        Physics.gravity = Vector3.down * gravity;
     }
 
     void Update()
@@ -35,10 +35,18 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
         }
-        else if (collision.gameObject.CompareTag("Obstacle"))
+        else if (collision.gameObject.CompareTag("Obstacle") && gameOver == false)
         {
             Debug.Log("Game Over");
             gameOver = true;
+
+            GameObject.Find("Canvas").GetComponent<MenuManager>().OpenMenu();
+            int score = GameObject.Find("Score Text").GetComponent<Scoring>().Score;
+            if (score != 0)
+            {
+                string name = SettingsManager.GetPlayerName();
+                HighScoreManager.AddScoreToFile(score, name);
+            }
         }
     }
 }

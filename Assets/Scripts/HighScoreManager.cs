@@ -10,14 +10,13 @@ public static class HighScoreManager
 
     public static List<HighScoreItem> LoadScores()
     {
-        //string path = Path.Combine(Application.persistentDataPath, relativeFilePath);
         string path = FileHelper.GetDataPath(highScoreFilePath);
         if (File.Exists(path))
         {
             Debug.Log("Reading high score file...");
             string jsonString = File.ReadAllText(path);
             Debug.Log("High score file read.");
-            return JsonUtility.FromJson<List<HighScoreItem>>(jsonString);
+            return JsonUtility.FromJson<HighScoreList>(jsonString).scores;
         }
         else
         {
@@ -30,10 +29,13 @@ public static class HighScoreManager
     {
         if (scores.Count != 0)
         {
-            //string path = Path.Combine(Application.persistentDataPath, relativeFilePath);
+            Debug.Log($"Trying to save {scores.Count} high scores...");
             string path = FileHelper.GetDataPath(highScoreFilePath);
-            string jsonString = JsonUtility.ToJson(scores);
+            string jsonString = JsonUtility.ToJson(new HighScoreList(scores));
+
+            Debug.Log("Saving high score file...");
             File.WriteAllText(path, jsonString);
+            Debug.Log("High score file saved.");
         }
         else
         {
@@ -43,7 +45,7 @@ public static class HighScoreManager
 
     public static void AddScoreToFile(int score, string name = "")
     {
-        HighScoreItem newScore = new HighScoreItem(score, System.DateTime.Now, name);
+        HighScoreItem newScore = new HighScoreItem(score, name);
 
         List<HighScoreItem> scores = LoadScores();
         if (scores.Count + 1 > maxScoreItems)
