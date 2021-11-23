@@ -6,6 +6,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
+    private AudioSource playerAudio;
+    public AudioClip crashSound;
+    public AudioClip gameOverSound;
+
+    //public AudioClip jumpSound;
+
+    //public AudioClip carSound;
     public float jumpForce;
     public float gravity;
     public bool isOnGround = true;
@@ -16,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity = Vector3.down * gravity;
+        playerAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -24,6 +32,7 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
+            //playerAudio.PlayOneShot(jumpSound, 1.0f);
         }
     }
 
@@ -39,6 +48,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameOver = true;
+            playerAudio.PlayOneShot(crashSound, 0.8f);
+            //toimiiko Game Over -ääni törmäysäänen jälkeen?
+            //playerAudio.PlayDelayed(2); tämä ei toimi
 
             GameObject.Find("Canvas").GetComponent<MenuManager>().OpenMenu();
             int score = GameObject.Find("Score Text").GetComponent<Scoring>().Score;
