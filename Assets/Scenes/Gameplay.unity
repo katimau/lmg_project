@@ -1354,13 +1354,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4f967c34359b44a91b66f8e4774ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 5252625578662715277, guid: 9e6b453e76951d94daf7f1522945c759, type: 3}
-  itemPrefab: {fileID: 8474473963547318733, guid: d72f7dd721322e246aa0256cae6088a7, type: 3}
-  spawnPoint: {fileID: 376547000}
-  spawnPosObject: {x: 20, y: 0, z: 0}
-  spawnPosItem: {x: 35, y: 1, z: 0}
-  startDelay: 3
-  repeatRate: 2
+  objectsToSpawn:
+  - prefab: {fileID: 5252625578662715277, guid: 9e6b453e76951d94daf7f1522945c759, type: 3}
+    startTime: 2
+    repeatIntervalMin: 2
+    repeatIntervalMax: 4
+    timeToNextSpawn: 0
+    spawnPosition: {x: 35, y: 0.5, z: 0}
+  - prefab: {fileID: 8474473963547318733, guid: d72f7dd721322e246aa0256cae6088a7, type: 3}
+    startTime: 2
+    repeatIntervalMin: 3
+    repeatIntervalMax: 6
+    timeToNextSpawn: 0
+    spawnPosition: {x: 45, y: 0.5, z: 0}
+  - prefab: {fileID: 8474473963547318733, guid: d5d3765d2a085a04da075f9bc137bc5e, type: 3}
+    startTime: 8
+    repeatIntervalMin: 7
+    repeatIntervalMax: 12
+    timeToNextSpawn: 0
+    spawnPosition: {x: 45, y: 0.5, z: 0}
 --- !u!4 &376547002
 Transform:
   m_ObjectHideFlags: 0
