@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     //public AudioClip jumpSound;
 
-    public AudioClip carSound;
+    //public AudioClip carSound;
     public float jumpForce;
     public float gravity;
     public bool isOnGround = true;
@@ -43,15 +43,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
-            //Auton ääni 
-            playerAudio.PlayOneShot(carSound, 0.2f);
         }
         else if (collision.gameObject.CompareTag("Obstacle") && gameOver == false)
         {
             Debug.Log("Game Over");
             gameOver = true;
             playerAudio.PlayOneShot(crashSound, 0.8f);
-            //playerAudio.PlayOneShot(gameOverSound, 0.8f);
             //toimiiko Game Over -ääni törmäysäänen jälkeen?
             //playerAudio.PlayDelayed(2); tämä ei toimi
 
