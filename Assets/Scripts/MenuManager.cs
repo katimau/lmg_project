@@ -13,6 +13,9 @@ public class MenuManager : MonoBehaviour
     public GameObject highScorePanel;
     public SettingsMenu settingsMenu;
 
+    private AudioSource menuAudio;
+    public AudioClip menuSound;
+
     private void Start()
     {
         if (menuPanel == null || settingsPanel == null || settingsMenu == null)
@@ -25,6 +28,7 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("Entering the game...");
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
+        //menuAudio.PlayOneShot(menuSound, 1.0f);
     }
 
     public void OpenSettings()
@@ -59,6 +63,7 @@ public class MenuManager : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Quitting the game...");
+        //menuAudio.PlayOneShot(menuSound, 1.0f);
         Application.Quit();
     }
 
