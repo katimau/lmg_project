@@ -16,7 +16,14 @@ public static class HighScoreManager
             Debug.Log("Reading high score file...");
             string jsonString = File.ReadAllText(path);
             Debug.Log("High score file read.");
-            return JsonUtility.FromJson<HighScoreList>(jsonString).scores;
+            if (jsonString != null && jsonString.Length > 0)
+            {
+                return JsonUtility.FromJson<HighScoreList>(jsonString).scores;
+            }
+            else
+            {
+                return new List<HighScoreItem>();
+            }
         }
         else
         {

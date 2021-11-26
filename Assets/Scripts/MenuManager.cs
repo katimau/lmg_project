@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
 
     public GameObject menuPanel;
     public GameObject settingsPanel;
+    public GameObject highScorePanel;
     public SettingsMenu settingsMenu;
 
     private void Start()
@@ -42,6 +43,17 @@ public class MenuManager : MonoBehaviour
     {
         settingsMenu.SaveSettings();
         ExitSettings();
+    }
+    public void OpenHighScores()
+    {
+        menuPanel.SetActive(false);
+        highScorePanel.SetActive(true);
+    }
+
+    public void ExitHighScores()
+    {
+        highScorePanel.SetActive(false);
+        menuPanel.SetActive(true);
     }
 
     public void QuitGame()
