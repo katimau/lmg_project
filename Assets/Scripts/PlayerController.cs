@@ -51,14 +51,19 @@ public class PlayerController : MonoBehaviour
             playerAudio.PlayOneShot(crashSound, 0.8f);
             //toimiiko Game Over -ääni törmäysäänen jälkeen?
             //playerAudio.PlayDelayed(2); tämä ei toimi
+            Invoke("DoGameOver", 0.5f);
+            
+        }
+    }
 
-            GameObject.Find("Canvas").GetComponent<MenuManager>().OpenMenu();
-            int score = GameObject.Find("Score Text").GetComponent<Scoring>().Score;
-            if (score != 0)
-            {
-                string name = SettingsManager.GetPlayerName();
-                HighScoreManager.AddScoreToFile(score, name);
-            }
+    private void DoGameOver()
+    {
+        GameObject.Find("Canvas").GetComponent<MenuManager>().OpenMenu();
+        int score = GameObject.Find("Score Text").GetComponent<Scoring>().Score;
+        if (score != 0)
+        {
+            string name = SettingsManager.GetPlayerName();
+            HighScoreManager.AddScoreToFile(score, name);
         }
     }
 }
