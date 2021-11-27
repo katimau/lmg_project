@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void DoGameOver()
     {
+        playerAudio.PlayOneShot(gameOverSound);
         GameObject.Find("Canvas").GetComponent<MenuManager>().OpenMenu();
         int score = GameObject.Find("Score Text").GetComponent<Scoring>().Score;
         if (score != 0)
