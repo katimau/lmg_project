@@ -6,13 +6,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
+    public ParticleSystem explosionParticle;
     private AudioSource playerAudio;
     public AudioClip crashSound;
     public AudioClip gameOverSound;
 
     //public AudioClip jumpSound;
 
-    //public AudioClip carSound;
+    public AudioClip carSound;
     public float jumpForce;
     public float gravity;
     public bool isOnGround = true;
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
-            //playerAudio.PlayOneShot(jumpSound, 1.0f);
+            
         }
     }
 
@@ -43,15 +44,15 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+            playerAudio.PlayOneShot(carSound, 0.1f);
         }
         else if (collision.gameObject.CompareTag("Obstacle") && gameOver == false)
         {
             Debug.Log("Game Over");
             gameOver = true;
-            playerAudio.PlayOneShot(crashSound, 0.8f);
-            //toimiiko Game Over -ääni törmäysäänen jälkeen?
-            //playerAudio.PlayDelayed(2); tämä ei toimi
-            Invoke("DoGameOver", 0.5f);
+            playerAudio.PlayOneShot(crashSound, 1f);
+            explosionParticle.Play();
+            Invoke("DoGameOver", 0.3f);
             
         }
     }
