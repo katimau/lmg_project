@@ -2492,6 +2492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8346351524ead55468c4f4f12d74516c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: 500
 --- !u!1 &705163610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3188,6 +3189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8346351524ead55468c4f4f12d74516c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: -500
 --- !u!1 &1037965692
 GameObject:
   m_ObjectHideFlags: 0
@@ -4007,6 +4009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8346351524ead55468c4f4f12d74516c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: -500
 --- !u!198 &1194532623 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 9125212449759046732, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
@@ -4909,6 +4912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8346351524ead55468c4f4f12d74516c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: 500
 --- !u!1 &1504576627
 GameObject:
   m_ObjectHideFlags: 0
