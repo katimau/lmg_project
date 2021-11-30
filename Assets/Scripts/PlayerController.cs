@@ -33,7 +33,12 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
-            
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && gameOver == false)
+        {
+            gameOver = true;
+            DoGameOver();
         }
     }
 
@@ -53,7 +58,6 @@ public class PlayerController : MonoBehaviour
             playerAudio.PlayOneShot(crashSound, 1f);
             explosionParticle.Play();
             Invoke("DoGameOver", 0.3f);
-            
         }
     }
 
