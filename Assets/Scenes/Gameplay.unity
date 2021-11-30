@@ -4372,7 +4372,6 @@ MonoBehaviour:
   explosionParticle: {fileID: 1194532623}
   crashSound: {fileID: 8300000, guid: 22ce886a8bf4a194b83a20efb92f5807, type: 3}
   gameOverSound: {fileID: 8300000, guid: ec2c54c1f5981f64ca42c1ecdee0426d, type: 3}
-  carSound: {fileID: 8300000, guid: 89fc893ba92d50440bfeb2f029a5c0a3, type: 3}
   jumpForce: 15
   gravity: 19.62
   isOnGround: 1
@@ -4387,9 +4386,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 89fc893ba92d50440bfeb2f029a5c0a3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
