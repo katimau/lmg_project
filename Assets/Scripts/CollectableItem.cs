@@ -5,9 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class CollectableItem : MonoBehaviour
 {
-    
     public AudioClip aani;
-     AudioSource collectSound;
+    private AudioSource collectSound;
     private Scoring scoreComponent;
 
     public int points;
@@ -27,6 +26,8 @@ public class CollectableItem : MonoBehaviour
             collectSound.PlayOneShot(aani, 0.9F);
         }
         scoreComponent.Score += points;
+        gameObject.GetComponent<SphereCollider>().enabled = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
         Destroy(gameObject, 1F);
     }
 }
