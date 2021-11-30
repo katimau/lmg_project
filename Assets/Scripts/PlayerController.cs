@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             playerAudio.PlayOneShot(crashSound, 1f);
             explosionParticle.Play();
-            Invoke("DoGameOver", 0.3f);
+            Invoke("DoGameOver", 0.65f);
         }
     }
 
