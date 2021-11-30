@@ -1921,7 +1921,7 @@ MonoBehaviour:
     repeatIntervalMin: 7
     repeatIntervalMax: 12
     timeToNextSpawn: 0
-    spawnPosition: {x: 45, y: 0.5, z: 0}
+    spawnPosition: {x: 45, y: 0.8, z: 0}
 --- !u!4 &376547002
 Transform:
   m_ObjectHideFlags: 0
