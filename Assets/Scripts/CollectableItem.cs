@@ -23,11 +23,11 @@ public class CollectableItem : MonoBehaviour
         if (collectSound != null)
         {
             Debug.Log("Soitetaan");
-            collectSound.PlayOneShot(aani, 0.9F);
+            collectSound.PlayOneShot(aani, 0.9f);
         }
         scoreComponent.Score += points;
         gameObject.GetComponent<SphereCollider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
-        Destroy(gameObject, 1F);
+        Destroy(gameObject, 1f);
     }
 }

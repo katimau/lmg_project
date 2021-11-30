@@ -11,11 +11,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip crashSound;
     public AudioClip gameOverSound;
 
-    //public AudioClip jumpSound;
-
     public AudioClip carSound;
     public float jumpForce;
-    public float gravity;
+    public float gravity; // Periaatteessa turha
     public bool isOnGround = true;
 
     public bool gameOver = false;

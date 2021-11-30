@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WheelControl : MonoBehaviour
 {
-
     public float rotateSpeed;
     private PlayerController pc;
 

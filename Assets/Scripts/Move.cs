@@ -10,7 +10,7 @@ public class Move : MonoBehaviour
 
     public bool destroyWhenOutOfBounds;
 
-    // Alue, minkä ulkopuolella oleva objecti tuhotaan, jos destroyWhenOutOfBounds
+    // Alue, minkä ulkopuolella oleva objecti tuhotaan, jos destroyWhenOutOfBounds on tosi
     public Vector3 boundsMin;
     public Vector3 boundsMax;
     private Bounds bounds;
