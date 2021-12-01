@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public AudioClip crashSound;
     public AudioClip gameOverSound;
 
-    public AudioClip carSound;
     public float jumpForce;
     public float gravity; // Periaatteessa turha
     public bool isOnGround = true;
@@ -27,6 +26,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (playerAudio.time > 3.4f + Random.Range(-0.1f, 0.1f))
+        {
+            playerAudio.time = 0.5f + Random.Range(-0.1f, 0.1f);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround && gameOver == false)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -45,13 +49,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
-            playerAudio.PlayOneShot(carSound, 0.1f);
         }
         else if (collision.gameObject.CompareTag("Obstacle") && gameOver == false)
         {
             Debug.Log("Game Over");
             gameOver = true;
-            playerAudio.PlayOneShot(crashSound, 1f);
+            playerAudio.PlayOneShot(crashSound, 4f);
             explosionParticle.Play();
             Invoke("DoGameOver", 0.65f);
         }
@@ -59,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     private void DoGameOver()
     {
-        playerAudio.PlayOneShot(gameOverSound);
+        playerAudio.PlayOneShot(gameOverSound, 4f);
         GameObject.Find("Canvas").GetComponent<MenuManager>().OpenMenu();
         int score = GameObject.Find("Score Text").GetComponent<Scoring>().Score;
         if (score != 0)
